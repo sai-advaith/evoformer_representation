@@ -163,3 +163,5 @@ splits/
 alignment_dir/
 weights/
 output/
+workdir/
+.vscode/
