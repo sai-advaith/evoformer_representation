@@ -11,7 +11,6 @@ pip install biopython==1.79 dm-tree==0.1.6 modelcif==0.7 ml-collections==0.1.0 s
 pip install pytorch_lightning==2.0.4 fair-esm mdtraj wandb
 pip install 'openfold @ git+https://github.com/aqlaboratory/openfold.git@103d037'
 ```
-We ran installation on a machine with CUDA 11.6 and have tested with A100 and A6000 GPUs.
 
 ### Preparing input files
 
@@ -35,5 +34,5 @@ tar -xvf alphafold_params_2022-12-06.tar params_model_1.npz
 ```
 
 ### References
-This codebase is based on [AlphaFlow[1]](https://github.com/bjing2016/alphaflow)
+This codebase is based on [AlphaFlow](https://github.com/bjing2016/alphaflow)[1]
 1. Bowen Jing, Bonnie Berger, & Tommi Jaakkola. (2024). AlphaFold Meets Flow Matching for Generating Protein Ensembles.
