@@ -33,3 +33,7 @@ Download the pretrained AlphaFold weights into the repository root via
 wget https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar
 tar -xvf alphafold_params_2022-12-06.tar params_model_1.npz
 ```
+
+### References
+This codebase is based on [AlphaFlow[1]](https://github.com/bjing2016/alphaflow)
+1. Bowen Jing, Bonnie Berger, & Tommi Jaakkola. (2024). AlphaFold Meets Flow Matching for Generating Protein Ensembles.
