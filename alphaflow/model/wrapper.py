@@ -29,6 +29,8 @@ from openfold.utils.tensor_utils import (
 )
 from collections import defaultdict
 from openfold.utils.lr_schedulers import AlphaFoldLRScheduler
+from typing import Dict, Tuple
+from torch import Tensor
 
 def gather_log(log, world_size):
     if world_size == 1:
@@ -346,6 +348,17 @@ class ModelWrapper(pl.LightningModule):
             for name, p in self.model.named_parameters():
                 if p.grad is None:
                     print(name)
+
+    def get_evoformer_representation(self, batch: Dict) -> Tuple[Tensor, Tensor]:
+        """
+        Get the evoformer model representations by running a single forward progragation through AlphaFold.
+        Evoformer representations are input to IPA module
+
+        params: `batch` dictionary containing information regarding protein to be modelled
+        returns: tuple of Tensors with single and pair representations
+        """
+        output = self.model(batch)
+        return output["single"], output["pair"]
 
     def inference(self, batch, as_protein=False, no_diffusion=False, self_cond=True, noisy_first=False, schedule=None):
         
