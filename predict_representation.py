@@ -70,10 +70,14 @@ def main():
         batch = tensor_tree_map(lambda x: x.cuda(), batch)  
         single_representation, pair_representation = model.get_evoformer_representation(batch)
 
+        # Match shape
+        single_representation = single_representation.squeeze(dim=0)
+        pair_representation = pair_representation.squeeze(dim=0)
+
         # Save representation
-        evoformer_representation_i = {"representation": {}}
-        evoformer_representation_i["representation"]["single"] = single_representation.detach().cpu().numpy()
-        evoformer_representation_i["representation"]["pair"] = pair_representation.detach().cpu().numpy()
+        evoformer_representation_i = {"representations": {}}
+        evoformer_representation_i["representations"]["single"] = single_representation.detach().cpu().numpy()
+        evoformer_representation_i["representations"]["pair"] = pair_representation.detach().cpu().numpy()
 
         # Filename
         filename = f"{args.outpdb}/{item['name']}.pkl"
